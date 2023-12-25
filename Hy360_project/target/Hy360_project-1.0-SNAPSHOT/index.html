@@ -1,10 +1,187 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Start Page</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+<html lang = "en">
+  <head>
+    <title>Register Form HTML5/CSS, JS</title>
+    <meta charset= "UTF-8">
+    <meta name = "viewport" content="width=device-width, initial-scale=1">
+    <link href= "css/cssExamples.css" rel=" stylesheet">
+    <script defer src = "js/ajax.js"></script> 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  </head>
+  <body>
+    <div>
+        <button onclick="switchForm('Add')">Add Customer</button>
+        <button onclick="switchForm('Supply')">Supply Vehicles</button>
+        <button onclick="switchForm('Search')">Search for a vehicle</button>
+        <button onclick="switchForm('Renting')">Renting</button>
+        <button onclick="switchForm('Returns')">Returns</button>
+        <button onclick="switchForm('Repairs')">Repairs</button>
+        <button onclick="switchForm('malfunction')">Mention a malfunction</button>
+        <button onclick="switchForm('accident')">Mention an accident</button>
+        <button onclick="switchForm('Questions')">Questions</button>
+    </div>
+      <div id="formsContainer">
+        <form id="addCustomerForm">
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" id="customerName" name="customerName" placeholder = "name"></td>
+                </tr>
+                <tr>
+                    <td>Surname:</td>
+                    <td><input type="text" id="customerSurname" name="customerSurname" placeholder = "surname"></td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td><input type="text" id="customerAddress" name="customerAddress" placeholder = "address"></td>
+                </tr>
+                <tr>
+                    <td>Date of Birth:</td>
+                    <td><input type="date" id="customerDOB" name="customerDOB" required></td>
+                </tr>
+                <tr>
+                    <td>License Number:</td>
+                    <td><input type="text" id="licenseNumber" name="licenseNumber" placeholder = "license number"></td>
+                </tr>
+                <tr>
+                    <td>Credit Card:</td>
+                    <td><input type="text" id="creditCard" name="creditCard" placeholder = "xxxx xxxx xxxx xxxx"></td>
+                </tr>
+            </table>
+
+<!--            <button type="button" onclick="submitAddCustomerForm()">Submit</button>-->
+        </form>
+
+        <form id="supplyVehiclesForm" style="display: none;">
+            <table>
+                <tr>
+                    <td>Brand:</td>
+                    <td><input type="text" id="customeRentingrName" name="customeRentingrName" placeholder = "name"></td>
+                </tr>
+                <tr>
+                    <td>Model:</td>
+                    <td><input type="text" id="customerRentingSurname" name="customerRentingSurname" placeholder = "surname"></td>
+                </tr>
+                <tr>
+                    <td>Color:</td>
+                    <td><input type="date" id="startingDate" name="startingDate" required></td>
+                </tr>
+                <tr>
+                    <td>total miles:</td>
+                    <td><input type="date" id="endingDate" name="endingDate" required></td>
+                </tr>
+                <tr>
+                    <td>Registration number:</td>
+                    <td><input type="text" id="creditRentingCard" name="creditRentingCard" placeholder = "xxxx xxxx xxxx xxxx"></td>
+                </tr>
+                <tr>
+                    <td>
+                      Type:
+                    </td>
+                    <td>
+                      <!--<label for="gender"></label>-->
+                      <input type = "radio" name = "gender" class = "" value = "male" required>Male
+                      <input type = "radio" name = "gender" class = "" value = "female" required>Female
+                      <input type = "radio" name = "gender" class = "" value = "other" required>Other
+                    </td>
+                 </tr>
+     <tr>
+            </table>
+        </form>
+          
+        <form id="searchVehicleForm" style="display: none;">
+            <table>
+                <tr>
+                    <td>Category:</td>
+                    <td><input type="text" id="searchCategory" name="searchCategory" placeholder = "category"></td>
+                </tr>
+            </table>
+        </form>
+
+        <form id="rentVehicleForm" style="display: none;">
+            <!<!-- add a table dynamicaly to add all the available cars and then check with rad and add the total cost and make the form below visible when atlseast one car is selected -->
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" id="customeRentingrName" name="customeRentingrName" placeholder = "name"></td>
+                </tr>
+                <tr>
+                    <td>Surname:</td>
+                    <td><input type="text" id="customerRentingSurname" name="customerRentingSurname" placeholder = "surname"></td>
+                </tr>
+                <tr>
+                    <td>From:</td>
+                    <td><input type="date" id="startingDate" name="startingDate" required></td>
+                </tr>
+                <tr>
+                    <td>To:</td>
+                    <td><input type="date" id="endingDate" name="endingDate" required></td>
+                </tr>
+                <tr>
+                    <td>Credit Card:</td>
+                    <td><input type="text" id="creditRentingCard" name="creditRentingCard" placeholder = "xxxx xxxx xxxx xxxx"></td>
+                </tr>
+            </table>
+        </form>
+          
+        <form id="returnVehicleForm" style="display: none;">
+            <table>
+                <tr>
+                    <td>Car Id:</td>
+                    <td><input type="text" id="getCarIdreturn" name="getCarIdreturn" placeholder = "add your car id"></td>
+                </tr>
+                 <tr>
+                    <td>Return date</td>
+                    <td><input type="date" id="returnDate" name="returnDate" required></td>
+                </tr>
+            </table>
+        </form>
+
+        <form id="repairVehicleForm" style="display: none;">
+            <table>
+                <tr>
+                    <td>Car Id:</td>
+                    <td><input type="text" id="getCarId" name="getCarId" placeholder = "add your car id"></td>
+                </tr>
+            </table>
+        </form>
+          
+        <form id="malfunctionForm" style="display: none;">
+            <table>
+                <tr>
+                    <td>Car Id:</td>
+                    <td><input type="text" id="getCarIdmal" name="getCarIdmal" placeholder = "add your car id"></td>
+                </tr>
+                <tr>
+                    <td>Submit a malfunction:</td>
+                    <td><input type="text" id="malfunctionSubmission" name="malfunctionSubmission" placeholder = "add details"></td>
+                </tr>
+            </table>
+        </form>
+
+        <form id="accidentForm" style="display: none;">
+            <table>
+                <tr>
+                    <td>Car Id:</td>
+                    <td><input type="text" id="getCarIdacc" name="getCarIdacc" placeholder = "add your car id"></td>
+                </tr>
+                <tr>
+                    <td>Submit accident:</td>
+                    <td><input type="text" id="accidentSubmission" name="accidentSubmission" placeholder = "add details"></td>
+                </tr>
+            </table>
+        </form>
+          
+        <form id="questionsForm" style="display: none;">
+            <table>
+                <tr>
+                    <td>Question:</td>
+                    <td><input type="text" id="askAQuestion" name="askAQuestion" placeholder = "add a question"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+  </body>
+</html> 
+
+    
