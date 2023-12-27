@@ -25,31 +25,49 @@
             <table>
                 <tr>
                     <td>Name:</td>
-                    <td><input type="text" id="customerName" name="customerName" placeholder = "name"></td>
+                    <td>
+                      <input type="text" id="customerName" name="customerName" placeholder = "name" value = "">
+                      <small></small>
+                    </td>
                 </tr>
                 <tr>
                     <td>Surname:</td>
-                    <td><input type="text" id="customerSurname" name="customerSurname" placeholder = "surname"></td>
+                    <td>
+                      <input type="text" id="customerSurname" name="customerSurname" placeholder = "surname" value = "">
+                      <small></small>
+
+                    </td>
                 </tr>
                 <tr>
                     <td>Address:</td>
-                    <td><input type="text" id="customerAddress" name="customerAddress" placeholder = "address"></td>
+                    <td>
+                      <input type="text" id="customerAddress" name="customerAddress" placeholder = "address" value = "">
+                      <small></small>
+                    </td>
                 </tr>
                 <tr>
                     <td>Date of Birth:</td>
-                    <td><input type="date" id="customerDOB" name="customerDOB" required></td>
+                    <td>
+                      <input type="date" id="customerDOB" name="customerDOB" required value = "">
+                      <small></small></td>
                 </tr>
                 <tr>
                     <td>License Number:</td>
-                    <td><input type="text" id="licenseNumber" name="licenseNumber" placeholder = "license number"></td>
+                    <td>
+                      <input type="text" id="licenseNumber" name="licenseNumber" placeholder = "license number" value = "">
+                      <small></small>
+                    </td>
                 </tr>
                 <tr>
                     <td>Credit Card:</td>
-                    <td><input type="text" id="creditCard" name="creditCard" placeholder = "xxxx xxxx xxxx xxxx"></td>
+                    <td>
+                      <input type="text" id="creditCard" name="creditCard" placeholder = "xxxx xxxx xxxx xxxx" value = "">
+                      <small></small>
+                    </td>
                 </tr>
             </table>
 
-<!--            <button type="button" onclick="submitAddCustomerForm()">Submit</button>-->
+           <button type="button" onclick="addCustomerOnSubmit();return false;">Submit</button>
         </form>
 
         <form id="supplyVehiclesForm" style="display: none;">

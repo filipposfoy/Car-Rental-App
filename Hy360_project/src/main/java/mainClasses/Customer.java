@@ -12,9 +12,9 @@ public class Customer {
 
     int customer_id;
     String name, surname, birthdate;
-    double creditCardNumber;
+    String creditCardNumber;
 
-    public Customer(int customer_id, String name, String surname, String birthdate, double creditCardNumber) {
+    public Customer(int customer_id, String name, String surname, String birthdate, String creditCardNumber) {
         this.customer_id = customer_id;
         this.name = name;
         this.surname = surname;
@@ -23,7 +23,8 @@ public class Customer {
     }
 
     public int getCustomer_id() {
-        return customer_id;
+        return 1;
+//        return customer_id;
     }
 
     public String getName() {
@@ -38,27 +39,27 @@ public class Customer {
         return birthdate;
     }
 
-    public double getCreditCardNumber() {
+    public String getCreditCardNumber() {
         return creditCardNumber;
     }
 
-    public void getCustomer_id(int customer_id) {
+    public void setCustomer_id(int customer_id) {
         this.customer_id = customer_id;
     }
 
-    public void getName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void getSurname(String surname) {
+    public void setSurname(String surname) {
         this.surname = surname;
     }
 
-    public void getBirthdate(String birthdate) {
+    public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
     }
 
-    public void getCreditCardNumber(double creditCardNumber) {
+    public void setCreditCardNumber(String creditCardNumber) {
         this.creditCardNumber = creditCardNumber;
     }
 }

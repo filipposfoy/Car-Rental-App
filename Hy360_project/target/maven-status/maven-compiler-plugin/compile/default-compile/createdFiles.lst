@@ -1,13 +1,14 @@
 database/init/InitDatabase.class
-database/tables/EditVehiclesTable.class
 mainClasses/Vehicle.class
 mainClasses/Customer.class
+servlets/addUser.class
 com/mycompany/hy360_project/JakartaRestConfiguration.class
 mainClasses/RentingOrder.class
 servlets/NewServlet.class
 subClasses/Renter.class
 com/mycompany/hy360_project/resources/JakartaEE8Resource.class
 database/DB_connection.class
+database/tables/EditCustomersTable.class
 subClasses/Driver.class
 subClasses/Bike.class
 subClasses/MotorVehicle.class

@@ -14,7 +14,7 @@ public class Renter extends Customer {
 
     int rentee_id;
 
-    public Renter(int customer_id, String name, String surname, String birthdate, double creditCardNumber, int rentee_id) {
+    public Renter(int customer_id, String name, String surname, String birthdate, String creditCardNumber, int rentee_id) {
         super(customer_id, name, surname, birthdate, creditCardNumber);
         this.rentee_id = rentee_id;
     }

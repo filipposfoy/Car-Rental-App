@@ -14,7 +14,7 @@ public class Driver extends Customer {
 
     double licenseNumber;
 
-    public Driver(int customer_id, String name, String surname, String birthdate, double creditCardNumber, double licenseNumber) {
+    public Driver(int customer_id, String name, String surname, String birthdate, String creditCardNumber, double licenseNumber) {
         super(customer_id, name, surname, birthdate, creditCardNumber);
         this.licenseNumber = licenseNumber;
     }

@@ -8,6 +8,7 @@ import java.sql.Connection;
 import static database.DB_connection.getInitialConnection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import database.tables.EditCustomersTable;
 
 
 /**
@@ -33,6 +34,8 @@ public class InitDatabase {
     }
 
     public void initTables() throws SQLException, ClassNotFoundException {
+        EditCustomersTable table = new EditCustomersTable();
+        table.createPetOwnersTable();
         // Table t = new Table();
         // t.createTables();
     }

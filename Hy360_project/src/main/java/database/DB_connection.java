@@ -13,9 +13,15 @@ import java.sql.SQLException;
  * @author user
  */
 public class DB_connection {
+//    String url = "jdbc:mysql://localhost:3306/mydatabase";
+//                String username = "admin";
+//                String password = "";
+//                Class.forName("com.mysql.cj.jdbc.Driver");
+//
+//    co  = DriverManager.getConnection(url, username, password);
 
-    private static final String url = "jdbc:mysql://localhost";
-    private static final String databaseName = "Hy360_Database";
+    private static final String url = "jdbc:mysql://localhost:3306/mydatabase";
+    private static final String databaseName = "mydatabase";
     private static final int port = 3306;
     private static final String username = "root";
     private static final String password = "";
@@ -28,8 +34,9 @@ public class DB_connection {
      * @throws java.lang.ClassNotFoundException
      */
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
-        Class.forName("com.mysql.jdbc.Driver");
-        return DriverManager.getConnection(url + ":" + port + "/" + databaseName, username, password);
+        Class.forName("com.mysql.cj.jdbc.Driver");
+//        return DriverManager.getConnection(url + ":" + port + "/" + databaseName + "?characterEncoding=UTF-8", username, password);
+        return DriverManager.getConnection(url, username, password);
     }
 
     public static Connection getInitialConnection() throws SQLException, ClassNotFoundException {
