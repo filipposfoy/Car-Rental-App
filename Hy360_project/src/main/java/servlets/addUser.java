@@ -24,16 +24,19 @@ public class addUser extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        String res = "";
+
         String user = request.getParameter("user");
         EditCustomersTable table = new EditCustomersTable();
         JsonObject jo = new JsonObject();
         try {
-            table.addCustomer(user);
+            res = table.addCustomer(user);
         } catch (Exception e) {
 
         }
 
-        jo.addProperty("str", user);
+        jo.addProperty("str", res);
+        jo.addProperty("color", "green");
 
         response.setContentType("application/json");
         response.getWriter().write(jo.toString());

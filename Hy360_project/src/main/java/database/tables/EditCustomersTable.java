@@ -9,25 +9,70 @@ import java.sql.Statement;
 import database.DB_connection;
 import java.sql.Connection;
 import java.sql.SQLException;
-//import java.sql.ResultSet;
 import com.google.gson.Gson;
-
-
+import java.sql.ResultSet;
 
 /**
  *
  * @author user
  */
 public class EditCustomersTable {
-
-    public void addCustomer(String json) throws ClassNotFoundException {
+    public String addCustomer(String json) throws ClassNotFoundException, Exception {
         Gson gson = new Gson();
         Customer user = gson.fromJson(json, Customer.class);
-        System.out.println(user);
-        addToDB(user);
+        System.out.println(json);
+//        System.out.println
+        return addToDB(user);
     }
 
-    public void addToDB(Customer user) throws ClassNotFoundException {
+    public static int getLastCustomerId() throws Exception {
+        int id = 0;
+
+        //        try {
+        //            Connection con = DB_connection.getConnection();
+        //            Statement stmt = con.createStatement();
+        //
+        //            String query = "SELECT customer_id FROM customers ORDER BY customer_id DESC LIMIT 1";
+        //            ResultSet resultSet = stmt.executeQuery(query);
+        //
+//                    if (resultSet.next()) {
+//                        lastInsertedCustomerId = resultSet.getInt("customer_id");
+//                    }
+        //
+        //            stmt.close();
+        //
+        //        } catch (SQLException ex) {
+        //            System.out.println("Exception occurred:");
+        //            ex.printStackTrace();
+        //        }
+        try {
+            Connection con = DB_connection.getConnection();
+            Statement stmt = con.createStatement();
+
+            String query = "SELECT customer_id FROM customers ORDER BY customer_id DESC LIMIT 1";
+
+//            if (resultSet.next()) {
+//                id = resultSet.getInt("customer_id");
+//            }
+            ResultSet set = stmt.executeQuery(query);
+            if (set.next()) {
+                id = set.getInt("customer_id");
+            }
+
+            id = stmt.getGeneratedKeys().getInt(1);
+            System.out.println("key is " + stmt.getGeneratedKeys().getInt(1));
+            stmt.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Exception occurred:");
+            ex.printStackTrace();
+        }
+
+        return id;
+    }
+
+    public String addToDB(Customer user) throws ClassNotFoundException, Exception {
+        int str = 0;
         try {
             Connection con = DB_connection.getConnection();
             Statement stmt = con.createStatement();
@@ -48,12 +93,14 @@ public class EditCustomersTable {
             System.out.println("Exception occurred:");
             ex.printStackTrace();
         }
+
+        return "Your user key is " + getLastCustomerId();
     }
 
     public void createPetOwnersTable() throws SQLException, ClassNotFoundException {
 
-        Connection con = DB_connection.getConnection();
-        Statement stmt = con.createStatement();
+            Connection con = DB_connection.getConnection();
+            Statement stmt = con.createStatement();
 
         String query = "CREATE TABLE customers "
                 + "(customer_id INTEGER not NULL AUTO_INCREMENT, "

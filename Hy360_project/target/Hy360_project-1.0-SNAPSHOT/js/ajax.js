@@ -4,6 +4,7 @@ const address = document.getElementById('customerAddress');
 const dob = document.getElementById('customerDOB');
 const lnumber = document.getElementById('licenseNumber');
 const creditcard = document.getElementById('creditCard');
+const msg = document.getElementById('msg')
 
 const switchForm = (type) => {
     $('#formsContainer form').hide();
@@ -54,7 +55,7 @@ const getUser = () => {
         address: address.value,
         birthdate: dob.value,
         licenseNumber: lnumber.value,
-        creditCard: creditcard.value
+        creditCardNumber: creditcard.value
       };
 }
 
@@ -67,11 +68,9 @@ const sendAddRequest = (user) => {
           if (xhr.status === 200) {
               const responseData = JSON.parse(xhr.responseText);
               console.log(responseData.str);
-              // petMsg.innerText = responseData.str;
-              // petMsg.style.color = "green";
-              // petButton.style.borderColor = "green";
-              // petMsg.style.display = "block";
-//                    onSuccess(petButton, responseData.str);
+              msg.innerText = responseData.str;
+              msg.style.color = responseData.color;
+              document.getElementById('addButton').style.borderColor = responseData.color;
           } else {
               console.log("not good");
               reject("Error occurred during the request.");

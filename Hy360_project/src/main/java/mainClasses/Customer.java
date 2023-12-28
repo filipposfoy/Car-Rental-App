@@ -23,8 +23,7 @@ public class Customer {
     }
 
     public int getCustomer_id() {
-        return 1;
-//        return customer_id;
+        return customer_id;
     }
 
     public String getName() {
