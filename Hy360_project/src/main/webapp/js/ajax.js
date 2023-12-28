@@ -72,11 +72,11 @@ const sendAddRequest = (user) => {
               msg.style.color = responseData.color;
               document.getElementById('addButton').style.borderColor = responseData.color;
           } else {
-              console.log("not good");
+              console.log("not good.");
               reject("Error occurred during the request.");
           }
       } else {
-          console.log("not good");
+          console.log("not good.");
           reject("Error occurred during the request.");
       }
   };
