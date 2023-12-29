@@ -21,39 +21,18 @@ public class EditCustomersTable {
         Gson gson = new Gson();
         Customer user = gson.fromJson(json, Customer.class);
         System.out.println(json);
-//        System.out.println
         return addToDB(user);
     }
 
     public static int getLastCustomerId() throws Exception {
         int id = 0;
 
-        //        try {
-        //            Connection con = DB_connection.getConnection();
-        //            Statement stmt = con.createStatement();
-        //
-        //            String query = "SELECT customer_id FROM customers ORDER BY customer_id DESC LIMIT 1";
-        //            ResultSet resultSet = stmt.executeQuery(query);
-        //
-//                    if (resultSet.next()) {
-//                        lastInsertedCustomerId = resultSet.getInt("customer_id");
-//                    }
-        //
-        //            stmt.close();
-        //
-        //        } catch (SQLException ex) {
-        //            System.out.println("Exception occurred:");
-        //            ex.printStackTrace();
-        //        }
         try {
             Connection con = DB_connection.getConnection();
             Statement stmt = con.createStatement();
 
             String query = "SELECT customer_id FROM customers ORDER BY customer_id DESC LIMIT 1";
 
-//            if (resultSet.next()) {
-//                id = resultSet.getInt("customer_id");
-//            }
             ResultSet set = stmt.executeQuery(query);
             if (set.next()) {
                 id = set.getInt("customer_id");
@@ -97,7 +76,7 @@ public class EditCustomersTable {
         return "Your user key is " + getLastCustomerId();
     }
 
-    public void createPetOwnersTable() throws SQLException, ClassNotFoundException {
+    public void createCustomersTable() throws SQLException, ClassNotFoundException {
 
             Connection con = DB_connection.getConnection();
             Statement stmt = con.createStatement();

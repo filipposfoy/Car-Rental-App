@@ -75,37 +75,55 @@
             <table>
                 <tr>
                     <td>Brand:</td>
-                    <td><input type="text" id="customeRentingrName" name="customeRentingrName" placeholder = "name"></td>
+                    <td><input type="text" id="supplyBrand" name="supplyBrand" placeholder = "brand"></td>
                 </tr>
                 <tr>
                     <td>Model:</td>
-                    <td><input type="text" id="customerRentingSurname" name="customerRentingSurname" placeholder = "surname"></td>
+                    <td><input type="text" id="supplyModel" name="supplyModel" placeholder = "model"></td>
                 </tr>
                 <tr>
                     <td>Color:</td>
-                    <td><input type="date" id="startingDate" name="startingDate" required></td>
+                    <td><input type="text" id="supplyColor" name="supplyColor" placeholder = "color"></td>
                 </tr>
                 <tr>
-                    <td>total miles:</td>
-                    <td><input type="date" id="endingDate" name="endingDate" required></td>
-                </tr>
-                <tr>
-                    <td>Registration number:</td>
-                    <td><input type="text" id="creditRentingCard" name="creditRentingCard" placeholder = "xxxx xxxx xxxx xxxx"></td>
+                    <td>Renting Cost:</td>
+                    <td><input type="text" id="supplyCost" name="supplyCost" placeholder = cost></td>
                 </tr>
                 <tr>
                     <td>
                       Type:
                     </td>
                     <td>
-                      <!--<label for="gender"></label>-->
-                      <input type = "radio" name = "gender" class = "" value = "male" required>Male
-                      <input type = "radio" name = "gender" class = "" value = "female" required>Female
-                      <input type = "radio" name = "gender" class = "" value = "other" required>Other
+                        <input type="radio" name="type" class="" value="Car" checked onchange="toggleFields()">Car
+                        <input type="radio" name="type" class="" value="Bike" onchange="toggleFields()">Bike
+                        <input type="radio" name="type" class="" value="Scooter" onchange="toggleFields()">Scooter
                     </td>
                  </tr>
-     <tr>
+                 <tr id = "rvar4">
+                    <td>Mileage:</td>
+                    <td><input type="text" id="supplyMileage" name="supplyMileage" placeholder = "mileage"></td>
+                </tr>
+                 <tr id = "rvar1">
+                     <td>Car type:</td>
+                     <td>
+                         <input id ="supplyType" name ="supplyType" type ="text" placeholder="car type">
+                     </td>
+                 </tr>
+                 <tr id = "rvar2">
+                     <td>Passenger Capacity:</td>
+                     <td>
+                         <input id ="supplyCapacity" name ="supplyCapacity" type ="text" placeholder="capacity">
+                     </td>
+                 </tr>
+                 <tr id = "rvar3">
+                     <td>License number:</td>
+                     <td>
+                         <input id ="licensePlateNumber" name ="licensePlateNumber" type ="text" placeholder="license plate number">
+                     </td>
+                 </tr>
             </table>
+            <button id = "RentalButton" type="button" onclick="sendSupplyRequst();return false;">Submit</button>
+           <small id = "msgR"></small>
         </form>
           
         <form id="searchVehicleForm" style="display: none;">

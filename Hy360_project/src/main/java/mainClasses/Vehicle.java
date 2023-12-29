@@ -11,17 +11,17 @@ package mainClasses;
 public class Vehicle {
 
     int vehicle_id;
-    String color, functionality;
-    int rentingCost, ensuranceCost;
-    boolean isRented;
+    String color, model, type, brand;
+    long rentingCost;
+    int isRented;
 
-    public Vehicle(int vehicle_id, String color, String functionality, int rentingCost, int ensuranceCost, boolean IsRented) {
+    public Vehicle(int vehicle_id, String color, String model, long rentingCost, String type, String brand, int IsRented) {
         this.color = color;
-        this.functionality = functionality;
+        this.model = model;
         this.rentingCost = rentingCost;
-        this.ensuranceCost = ensuranceCost;
+        this.brand = brand;
+        this.type = type;
         this.isRented = isRented;
-
     }
 
     public int getVehicle_id() {
@@ -32,19 +32,23 @@ public class Vehicle {
         return color;
     }
 
-    public String getFunctionality() {
-        return functionality;
+    public String getModel() {
+        return model;
     }
 
-    public int getRentingCost() {
+    public String getBrand() {
+        return brand;
+    }
+
+    public long getRentingCost() {
         return rentingCost;
     }
 
-    public int getEnsuranceCost() {
-        return ensuranceCost;
+    public String getType() {
+        return type;
     }
 
-    public boolean getIsRented() {
+    public int getIsRented() {
         return isRented;
     }
 
@@ -56,19 +60,23 @@ public class Vehicle {
         this.color = color;
     }
 
-    public void setFunctionality(String functionality) {
-        this.functionality = functionality;
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public void setRentingCost(int rentingCost) {
         this.rentingCost = rentingCost;
     }
 
-    public void setEnsuranceCost(int ensuranceCost) {
-        this.ensuranceCost = ensuranceCost;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public void setIsRented(boolean isRented) {
+    public void setIsRented(int isRented) {
         this.isRented = isRented;
     }
 }

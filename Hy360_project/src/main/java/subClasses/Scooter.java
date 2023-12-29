@@ -12,29 +12,19 @@ import mainClasses.Vehicle;
  */
 public class Scooter extends Vehicle {
 
-    String model;
-    int totalMiles;
+    int scooter_id;
 
 
-    public Scooter(int vehicle_id, String color, String functionality, int rentingCost, int ensuranceCost, boolean IsRented, String model, int totalMiles) {
-        super(vehicle_id, color, functionality, rentingCost, ensuranceCost, IsRented);
-        this.model = model;
-        this.totalMiles = totalMiles;
+    public Scooter(int vehicle_id, String color, String model, long rentingCost, String type, String brand, int isRented, int scooter_id) {
+        super(vehicle_id, color, model, rentingCost, type, brand, isRented);
+        this.scooter_id = scooter_id;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setScooter_id(int scooter_id) {
+        this.scooter_id = scooter_id;
     }
 
-    public void setTotalMiles(int totalMiles) {
-        this.totalMiles = totalMiles;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public int getTotalMiles() {
-        return totalMiles;
+    public int getScooter_id() {
+        return scooter_id;
     }
 }

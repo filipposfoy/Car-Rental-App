@@ -12,29 +12,18 @@ import mainClasses.Vehicle;
  */
 public class Bike extends Vehicle {
 
-    String type;
-    int size;
+    int bike_id;
 
-    public Bike(int vehicle_id, String color, String functionality, int rentingCost, int ensuranceCost, boolean IsRented, String type, int size) {
-        super(vehicle_id, color, functionality, rentingCost, ensuranceCost, IsRented);
-        this.type = type;
-        this.size = size;
+    public Bike(int vehicle_id, String color, String model, long rentingCost, String type, String brand, int isRented, int bike_id) {
+        super(vehicle_id, color, model, rentingCost, type, brand, isRented);
+        this.bike_id = bike_id;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setBike_id(int scooter_id) {
+        this.bike_id = bike_id;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public int getBike_id() {
+        return bike_id;
     }
-
-    public String getType() {
-        return type;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
 }

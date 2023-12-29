@@ -12,47 +12,47 @@ import mainClasses.Vehicle;
  */
 public class MotorVehicle extends Vehicle {
 
-    String model, type;
-    int totalMiles, registrationNumber;
+    long licenseNumber, passengerCapacity;
+    String mileage, carType;
 
-    public MotorVehicle(int vehicle_id, String color, String functionality, int rentingCost, int ensuranceCost, boolean IsRented, String model, String type, int totalMiles, int registrationNumber) {
-        super(vehicle_id, color, functionality, rentingCost, ensuranceCost, IsRented);
-        this.model = model;
-        this.type = type;
-        this.totalMiles = totalMiles;
-        this.registrationNumber = registrationNumber;
+    public MotorVehicle(int vehicle_id, String color, String model, long rentingCost, String type, String brand, int isRented, String mileage, long licenseNumber, long passengerCapacity, String carType) {
+        super(vehicle_id, color, model, rentingCost, type, brand, isRented);
+        this.mileage = mileage;
+        this.passengerCapacity = passengerCapacity;
+        this.carType = carType;
+        this.licenseNumber = licenseNumber;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+
+    public void setLicenseNumber(long licenseNumber) {
+        this.licenseNumber = licenseNumber;
     }
 
-    public void setTotalMiles(int totalMiles) {
-        this.totalMiles = totalMiles;
+    public void setPassengerCapacity(long passengerCapacity) {
+        this.passengerCapacity = passengerCapacity;
     }
 
-    public String getModel() {
-        return model;
+    public long getPassengerCapacity() {
+        return passengerCapacity;
     }
 
-    public int getTotalMiles() {
-        return totalMiles;
+    public void setCarType(String carType) {
+        this.carType = carType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public String getCarType() {
+        return carType;
     }
 
-    public void setRegistrationNumber(int registrationNumber) {
-        this.registrationNumber = registrationNumber;
+    public long getLlcenseNumber() {
+        return licenseNumber;
     }
 
-    public String getType() {
-        return type;
+    public void setMileage(String mileage) {
+        this.mileage = mileage;
     }
 
-    public int getRegistrationNumber() {
-        return registrationNumber;
+    public String getMileage() {
+        return mileage;
     }
-
 }
