@@ -133,9 +133,9 @@
                       Type:
                     </td>
                     <td>
-                        <input type="radio" name="type" class="" value="Car" onchange="showVehicles('motor_vehicles')">Car
-                        <input type="radio" name="type" class="" value="Bike" onchange="showVehicles('bikes')">Bike
-                        <input type="radio" name="type" class="" value="Scooter" onchange="showVehicles('scooters')">Scooter
+                        <input type="radio" name="typeR" class="" value="Car" onchange="showVehicles('motor_vehicles')">Car
+                        <input type="radio" name="typeR" class="" value="Bike" onchange="showVehicles('bikes')">Bike
+                        <input type="radio" name="typeR" class="" value="Scooter" onchange="showVehicles('scooters')">Scooter
                     </td>
                  </tr>
             </table>
@@ -172,7 +172,10 @@
             <table>
                 <tr>
                     <td>Car Id:</td>
-                    <td><input type="text" id="getCarIdreturn" name="getCarIdreturn" placeholder = "add your car id"></td>
+                    <td>
+                        <input type="text" id="getCarIdreturn" name="getCarIdreturn" placeholder = "add your car id">
+                        <small></small>
+                    </td>
                 </tr>
                  <tr>
                     <td>Return date</td>
@@ -184,9 +187,30 @@
         <form id="repairVehicleForm" style="display: none;">
             <table>
                 <tr>
-                    <td>Car Id:</td>
-                    <td><input type="text" id="getCarId" name="getCarId" placeholder = "add your car id"></td>
+                    <td>Vehicle Id:</td>
+                    <td>
+                        <input type="text" id="getRepairId" name="getRepairId" placeholder = "add your vehicle id">
+                        <small></small>
+                    </td>
                 </tr>
+                <tr>
+                    <td>Vehicle type:</td>
+                    <td>
+                        <input type="radio" name="typet" class="" value="Car">Car
+                        <input type="radio" name="typet" class="" value="Bike">Bike
+                        <input type="radio" name="typet" class="" value="Scooter">Scooter
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Maintenance type:
+                    </td>
+                    <td>
+                        <input id = "maintenance" type="radio" name="typeM" class="" value="maintenance" onchange="repairVehicle('maintenance')">Maintenance
+                        <input id = "repair" type="radio" name="typeM" class="" value="repair" onchange="repairVehicle('repair')">Repair
+                    </td>    
+                </tr>
+                
             </table>
         </form>
           

@@ -56,12 +56,13 @@ public class EditCustomersTable {
             Connection con = DB_connection.getConnection();
             Statement stmt = con.createStatement();
 
-            String insertQuery = "INSERT INTO `customers` (`customer_id`, `name`, `surname`, `birthdate`, `creditcard`) VALUES ("
+            String insertQuery = "INSERT INTO `customers` (`customer_id`, `name`, `surname`, `birthdate`, `creditcard`, `address`) VALUES ("
                     + "'" + user.getCustomer_id() + "',"
                     + "'" + user.getName() + "',"
                     + "'" + user.getSurname() + "',"
                     + "'" + user.getBirthdate() + "',"
-                    + "'" + user.getCreditCardNumber() + "')";
+                    + "'" + user.getCreditCardNumber() + "',"
+                    + "'" + user.getAddress() + "')";
 
             stmt.executeUpdate(insertQuery);
             System.out.println("# The customer was successfully added in the database.");

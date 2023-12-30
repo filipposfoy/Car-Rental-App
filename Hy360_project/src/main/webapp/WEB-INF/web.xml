@@ -25,6 +25,14 @@
         <url-pattern>/addUser</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>repairVehicle</servlet-name>
+        <servlet-class>servlets.repairVehicle</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>repairVehicle</servlet-name>
+        <url-pattern>/repairVehicle</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>searchVehicle</servlet-name>
         <servlet-class>servlets.searchVehicle</servlet-class>
     </servlet>

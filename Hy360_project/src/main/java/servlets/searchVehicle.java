@@ -50,23 +50,16 @@ public class searchVehicle extends HttpServlet {
         for (int i = 0; i < arr.size(); i++) {
             if (arr.get(i) instanceof MotorVehicle) {
                 MotorVehicle v = (MotorVehicle) arr.get(i);
-                // Process MotorVehicle object
                 jo.addProperty("" + i, v.printString(i + 1));
             } else if (arr.get(i) instanceof Bike) {
                 Bike v = (Bike) arr.get(i);
-                // Process Bike object
                 jo.addProperty("" + i, v.printString(i + 1));
             } else if (arr.get(i) instanceof Scooter) {
                 Scooter v = (Scooter) arr.get(i);
-                // Process Scooter object
                 jo.addProperty("" + i, v.printString(i + 1));
             }
         }
-
-//        System.out.println(output);
         jo.addProperty("str", arr.size());
-//        jo.addProperty("size", "hello");
-//        jo.addProperty("str", "hello");
 
         response.setContentType("application/json");
         response.getWriter().write(jo.toString());

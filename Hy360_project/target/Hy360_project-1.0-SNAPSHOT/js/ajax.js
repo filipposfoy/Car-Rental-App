@@ -52,6 +52,57 @@ const switchForm = (type) => {
     }
 }
 
+const getType = (str) => {
+    return str;
+}
+
+const repairVehicle = (typeOfRepair) => {
+    
+    if (document.getElementById('getRepairId').value === "") {
+        onError(document.getElementById('getRepairId'), "Enter a vehicle id");
+        $("#"+typeOfRepair).prop("checked", false);
+        return;
+    } else {
+        
+        onSuccess(document.getElementById('getRepairId'));
+    }
+    if (document.querySelector('input[name="petGender"]:checked') === null) {
+        return;
+    } 
+
+    const req = {
+        vehicle_id: document.getElementById('getRepairId').value,
+        type: typeOfRepair,
+        vehicle_type: document.querySelector('input[name="typet"]:checked').value,
+    };
+
+//    console.      
+
+    var xhr = new XMLHttpRequest();
+    var queryParams;
+    
+    xhr.onload = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                const responseData = JSON.parse(xhr.responseText);
+                console.log(responseData.str);
+            } else {
+                console.log("not good.");
+                reject("Error occurred during the request.");
+            }
+        } else {
+            console.log("not good.");
+            reject("Error occurred during the request.");
+        }
+    };
+
+    const url = "repairVehicle";
+    xhr.open("POST", url);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    queryParams = `user=${encodeURIComponent(JSON.stringify(req))}`;
+    xhr.send(queryParams);
+}
+
 const showVehicles = (type) => {
     var xhr = new XMLHttpRequest();
     var queryParams;

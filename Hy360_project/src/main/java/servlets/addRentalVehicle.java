@@ -72,6 +72,4 @@ public class addRentalVehicle extends HttpServlet {
         response.setContentType("application/json");
         response.getWriter().write(jo.toString());
     }
-
-
 }

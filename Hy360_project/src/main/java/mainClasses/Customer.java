@@ -11,15 +11,16 @@ package mainClasses;
 public class Customer {
 
     int customer_id;
-    String name, surname, birthdate;
+    String name, surname, birthdate, address;
     String creditCardNumber;
 
-    public Customer(int customer_id, String name, String surname, String birthdate, String creditCardNumber) {
+    public Customer(int customer_id, String name, String surname, String birthdate, String creditCardNumber, String address) {
         this.customer_id = customer_id;
         this.name = name;
         this.surname = surname;
         this.birthdate = birthdate;
         this.creditCardNumber = creditCardNumber;
+        this.address = address;
     }
 
     public int getCustomer_id() {
@@ -44,6 +45,14 @@ public class Customer {
 
     public void setCustomer_id(int customer_id) {
         this.customer_id = customer_id;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public void setName(String name) {

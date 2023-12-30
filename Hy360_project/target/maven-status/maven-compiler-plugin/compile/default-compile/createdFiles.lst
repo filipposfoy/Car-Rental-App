@@ -1,6 +1,7 @@
 database/init/InitDatabase.class
 database/tables/EditVehiclesTable.class
 mainClasses/Vehicle.class
+servlets/repairVehicle.class
 mainClasses/Customer.class
 servlets/addUser.class
 com/mycompany/hy360_project/JakartaRestConfiguration.class
