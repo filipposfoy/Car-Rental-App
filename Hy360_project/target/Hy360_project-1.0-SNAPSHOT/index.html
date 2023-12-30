@@ -129,10 +129,17 @@
         <form id="searchVehicleForm" style="display: none;">
             <table>
                 <tr>
-                    <td>Category:</td>
-                    <td><input type="text" id="searchCategory" name="searchCategory" placeholder = "category"></td>
-                </tr>
+                    <td>
+                      Type:
+                    </td>
+                    <td>
+                        <input type="radio" name="type" class="" value="Car" onchange="showVehicles('motor_vehicles')">Car
+                        <input type="radio" name="type" class="" value="Bike" onchange="showVehicles('bikes')">Bike
+                        <input type="radio" name="type" class="" value="Scooter" onchange="showVehicles('scooters')">Scooter
+                    </td>
+                 </tr>
             </table>
+            <table id ="vehicleTable"></table>
         </form>
 
         <form id="rentVehicleForm" style="display: none;">

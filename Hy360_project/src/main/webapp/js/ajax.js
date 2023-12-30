@@ -52,6 +52,45 @@ const switchForm = (type) => {
     }
 }
 
+const showVehicles = (type) => {
+    var xhr = new XMLHttpRequest();
+    var queryParams;
+
+    xhr.onload = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                const responseData = JSON.parse(xhr.responseText);
+                console.log(responseData.str);
+                var tableContainer = document.getElementById("vehicleTable");
+
+                var table = document.createElement("table");
+                var row = table.insertRow();
+
+                for (let i = 0; i < responseData.str; i++) {
+                    var dataItem = responseData['' + i];
+                    var cell = row.insertCell();
+                    cell.innerHTML = dataItem;
+                }
+                tableContainer.innerHTML = "";
+                tableContainer.appendChild(table);
+            } else {
+                console.log("not good.");
+                reject("Error occurred during the request.");
+            }
+        } else {
+            console.log("not good.");
+            reject("Error occurred during the request.");
+        }
+    };
+
+    const url = "searchVehicle";
+    xhr.open("POST", url);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    queryParams = `user=${encodeURIComponent(JSON.stringify({ type }))}`;
+    xhr.send(queryParams);
+};
+
+
 const toggleFields = () => {
     const type = document.querySelector('input[name="type"]:checked').value;
     document.getElementById('rvar1').style.display = (type === "Car") ? "table-row" : "none";
@@ -69,6 +108,7 @@ const getSupply = () => {
         type: type,
         rentingCost: cost.value,
         isRented: 0,
+        under_service: 0,
     };
     
     if (type === "Car") {

@@ -15,8 +15,8 @@ public class Scooter extends Vehicle {
     int scooter_id;
 
 
-    public Scooter(int vehicle_id, String color, String model, long rentingCost, String type, String brand, int isRented, int scooter_id) {
-        super(vehicle_id, color, model, rentingCost, type, brand, isRented);
+    public Scooter(int vehicle_id, String color, String model, long rentingCost, String type, String brand, int isRented, int under_service, int scooter_id) {
+        super(vehicle_id, color, model, rentingCost, type, brand, isRented, under_service);
         this.scooter_id = scooter_id;
     }
 
@@ -27,4 +27,15 @@ public class Scooter extends Vehicle {
     public int getScooter_id() {
         return scooter_id;
     }
+
+    public String printString(int num) {
+        return "      <b>Scooter<b> " + num + "<br><br>"
+                + "brand       = " + this.getBrand() + "<br>"
+                + "color       = " + this.getColor() + "<br>"
+                + "model       = " + this.getModel() + "<br>"
+                + "rentingCost = " + this.getRentingCost() + "<br>"
+                + "type        = " + this.getType() + "<br>"
+                + "scooter id  = " + this.getScooter_id() + "<br>";
+    }
+
 }

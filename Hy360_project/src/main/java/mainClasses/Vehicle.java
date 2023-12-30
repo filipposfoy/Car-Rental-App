@@ -13,15 +13,16 @@ public class Vehicle {
     int vehicle_id;
     String color, model, type, brand;
     long rentingCost;
-    int isRented;
+    int isRented, under_service;
 
-    public Vehicle(int vehicle_id, String color, String model, long rentingCost, String type, String brand, int IsRented) {
+    public Vehicle(int vehicle_id, String color, String model, long rentingCost, String type, String brand, int IsRented, int under_service) {
         this.color = color;
         this.model = model;
         this.rentingCost = rentingCost;
         this.brand = brand;
         this.type = type;
         this.isRented = isRented;
+        this.under_service = under_service;
     }
 
     public int getVehicle_id() {
@@ -52,6 +53,14 @@ public class Vehicle {
         return isRented;
     }
 
+    public int getUnder_service() {
+        return under_service;
+    }
+
+    public void setUnder_service(int under_service) {
+        this.under_service = under_service;
+    }
+
     public void setVehicle_id(int vehicle_id) {
         this.vehicle_id = vehicle_id;
     }
@@ -78,5 +87,17 @@ public class Vehicle {
 
     public void setIsRented(int isRented) {
         this.isRented = isRented;
+    }
+
+    public String printString(int num) {
+        return "Vehicle " + num + "<br>"
+                + "vehicle_id=" + vehicle_id
+                + ", color='" + color + '\''
+                + ", model='" + model + '\''
+                + ", type='" + type + '\''
+                + ", brand='" + brand + '\''
+                + ", rentingCost=" + rentingCost
+                + ", isRented=" + isRented
+                + '}';
     }
 }

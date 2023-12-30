@@ -15,8 +15,8 @@ public class MotorVehicle extends Vehicle {
     long licenseNumber, passengerCapacity;
     String mileage, carType;
 
-    public MotorVehicle(int vehicle_id, String color, String model, long rentingCost, String type, String brand, int isRented, String mileage, long licenseNumber, long passengerCapacity, String carType) {
-        super(vehicle_id, color, model, rentingCost, type, brand, isRented);
+    public MotorVehicle(int vehicle_id, String color, String model, long rentingCost, String type, String brand, int isRented, int under_service, String mileage, long licenseNumber, long passengerCapacity, String carType) {
+        super(vehicle_id, color, model, rentingCost, type, brand, isRented, under_service);
         this.mileage = mileage;
         this.passengerCapacity = passengerCapacity;
         this.carType = carType;
@@ -55,4 +55,20 @@ public class MotorVehicle extends Vehicle {
     public String getMileage() {
         return mileage;
     }
+
+    @Override
+    public String printString(int num) {
+        return "         <b>Motor vehicle<b> " + num + "<br><br>"
+                + "brand             = " + getBrand() + "<br>"
+                + "model             = " + getModel() + "<br>"
+                + "color             = " + getColor() + "<br>"
+                + "rentingCost       = " + getRentingCost() + "<br>"
+                + "type              = " + getType() + "<br>"
+                + "mileage           = " + mileage + "<br>"
+                + "licenseNumber     = " + licenseNumber + "<br>"
+                + "passengerCapacity = " + passengerCapacity + "<br>"
+                + "carType           = " + carType + "<br>"
+                + "vehicle id        = " + getVehicle_id() + "<br>";
+    }
+
 }
