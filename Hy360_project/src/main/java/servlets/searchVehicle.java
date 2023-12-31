@@ -42,7 +42,7 @@ public class searchVehicle extends HttpServlet {
         ArrayList<Vehicle> arr = new ArrayList();
 
         try {
-            arr = table.getAvailableMotorVehicles2(str);
+            arr = table.getAvailableMotorVehicles(str);
         } catch (Exception e) {
 
         }
@@ -70,25 +70,6 @@ public class searchVehicle extends HttpServlet {
             }
         }
 
-//            if (arr.get(i) instanceof MotorVehicle) {
-//                MotorVehicle v = (MotorVehicle) arr.get(i);
-//                if (v.getType() == "Car") {
-//                    jo.addProperty("" + i, v.printString(i + 1));
-//                    ;
-//                }
-//            }
-//            if (arr.get(i) instanceof Bike) {
-//                Bike v = (Bike) arr.get(i);
-//                if (v.getType() == "Bike") {
-//                    jo.addProperty("" + i, v.printString(i + 1));
-//                }
-//            }
-//            if (arr.get(i) instanceof Scooter) {
-//                Scooter v = (Scooter) arr.get(i);
-//                if (v.getType() == "Scooter") {
-//                    jo.addProperty("" + i, v.printString(i + 1));
-//                }
-//            }
         jo.addProperty("str", arr.size());
 
         response.setContentType("application/json");

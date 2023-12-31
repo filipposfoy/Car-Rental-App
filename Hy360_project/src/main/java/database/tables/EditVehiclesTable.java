@@ -70,7 +70,6 @@ public class EditVehiclesTable {
                 String mileage = set.getString("mileage");
 
                 String[] result = {String.valueOf(licenceNumber), String.valueOf(passengerCapacity), carType, mileage};
-//                System.out.println(result);
                 stmt.close();
 
                 return result;
@@ -154,8 +153,6 @@ public class EditVehiclesTable {
 
             String insertQuery = "SELECT COUNT(*) FROM vehicles WHERE licenceNumber = " + licenceNumber + " LIMIT 25";
 
-//            System.out.println(insertQuery);
-
             rs = stmt.executeQuery(insertQuery);
 
             if (rs.next()) {
@@ -198,45 +195,7 @@ public class EditVehiclesTable {
         return "motor vehicle was added successfully with licence the number: " + user.getLicenceNumber();
     }
 
-    public ArrayList<? extends Vehicle> getAvailableMotorVehicles(String table) throws SQLException, ClassNotFoundException {
-        Connection con = DB_connection.getConnection();
-        Statement stmt = con.createStatement();
-
-        ArrayList<Vehicle> motor_vehicles = new ArrayList<>();
-        ResultSet rs = null;
-
-        try {
-            rs = stmt.executeQuery("SELECT * FROM " + table + " WHERE isRented = 0;");
-
-            while (rs.next()) {
-                if (table.equals("motor_vehicles")) {
-                    String json = DB_connection.getResultsToJSON(rs);
-                    Gson gson = new Gson();
-                    MotorVehicle vh = gson.fromJson(json, MotorVehicle.class);
-                    motor_vehicles.add(vh);
-                } else if (table.equals("bikes")) {
-                    String json = DB_connection.getResultsToJSON(rs);
-                    Gson gson = new Gson();
-                    Bike vh = gson.fromJson(json, Bike.class);
-                    motor_vehicles.add(vh);
-                } else {
-                    String json = DB_connection.getResultsToJSON(rs);
-                    Gson gson = new Gson();
-                    Scooter vh = gson.fromJson(json, Scooter.class);
-                    motor_vehicles.add(vh);
-                }
-            }
-
-            return motor_vehicles;
-        } catch (Exception e) {
-            System.err.println("Got an exception! ");
-            System.err.println(e.getMessage());
-        }
-
-        return null;
-    }
-
-    public ArrayList<Vehicle> getAvailableMotorVehicles2(String type) throws SQLException, ClassNotFoundException {
+    public ArrayList<Vehicle> getAvailableMotorVehicles(String type) throws SQLException, ClassNotFoundException {
         Connection con = DB_connection.getConnection();
         Statement stmt = con.createStatement();
 
