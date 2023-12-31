@@ -82,7 +82,7 @@ public class addRentalVehicle extends HttpServlet {
         }
 
 //        jo.addProperty("str", user);
-        jo.addProperty("str", ln);
+        jo.addProperty("str", res);
         jo.addProperty("color", "green");
 
         response.setContentType("application/json");

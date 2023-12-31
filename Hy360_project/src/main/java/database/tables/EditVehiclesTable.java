@@ -55,6 +55,37 @@ public class EditVehiclesTable {
         return addToDBScooter(user);
     }
 
+    public String[] getMotorVehicle(long id) throws Exception {
+        try {
+            Connection con = DB_connection.getConnection();
+            Statement stmt = con.createStatement();
+
+            String query = "SELECT * FROM motor_vehicles WHERE licenceNumber = " + id + ";";
+
+            ResultSet set = stmt.executeQuery(query);
+            if (set.next()) {
+                long licenceNumber = set.getLong("licenceNumber");
+                int passengerCapacity = set.getInt("passengerCapacity");
+                String carType = set.getString("carType");
+                String mileage = set.getString("mileage");
+
+                String[] result = {String.valueOf(licenceNumber), String.valueOf(passengerCapacity), carType, mileage};
+//                System.out.println(result);
+                stmt.close();
+
+                return result;
+            }
+
+            stmt.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Exception occurred:");
+            ex.printStackTrace();
+        }
+
+        return null;
+    }
+
     public static int getLastId(String table, String uid) throws Exception {
         int id = 0;
 
@@ -154,20 +185,6 @@ public class EditVehiclesTable {
                     + "'" + user.getPassengerCapacity() + "',"
                     + "'" + user.getCarType() + "')";
 
-//            String insertQuery = "INSERT INTO `motor_vehicles`(`color`, `model`, `rentingCost`, `type`, `brand`, `isRented`, `mileage`, `licenceNumber`, `passengerCapacity`, `carType`, `under_service`) VALUES("
-//                    //                    + "'" + user.getVehicle_id() + "',"
-//                    + "'" + user.getColor() + "',"
-//                    + "'" + user.getModel() + "',"
-//                    + "'" + user.getRentingCost() + "',"
-//                    + "'" + user.getType() + "',"
-//                    + "'" + user.getBrand() + "',"
-//                    + "'" + user.getIsRented() + "',"
-//                    + "'" + user.getMileage() + "',"
-//                    + "'" + user.getLicenceNumber() + "',"
-//                    + "'" + user.getPassengerCapacity() + "',"
-//                    + "'" + user.getCarType() + "',"
-//                    + "'" + user.getUnder_service() + "')";
-
             stmt.executeUpdate(insertQuery);
             System.out.println("# The vehicle was successfully added in the database.");
 
@@ -178,7 +195,7 @@ public class EditVehiclesTable {
             ex.printStackTrace();
         }
 
-        return "Your unique motor vehicle key is " + getLastId("motor_vehicles", "vehicle_id");
+        return "motor vehicle was added successfully with licence the number: " + user.getLicenceNumber();
     }
 
     public ArrayList<? extends Vehicle> getAvailableMotorVehicles(String table) throws SQLException, ClassNotFoundException {
@@ -231,22 +248,10 @@ public class EditVehiclesTable {
             System.out.println(query);
 
             while (rs.next()) { // need to get id from scooters and bike and remove extra attributes from cars
-//                if (table.equals("motor_vehicles")) {
-                    String json = DB_connection.getResultsToJSON(rs);
-                    Gson gson = new Gson();
+                String json = DB_connection.getResultsToJSON(rs);
+                Gson gson = new Gson();
                 Vehicle vh = gson.fromJson(json, Vehicle.class);
-                    motor_vehicles.add(vh);
-//                } else if (table.equals("bikes")) {
-//                    String json = DB_connection.getResultsToJSON(rs);
-//                    Gson gson = new Gson();
-//                    Bike vh = gson.fromJson(json, Bike.class);
-//                    motor_vehicles.add(vh);
-////                } else {
-//                    String json = DB_connection.getResultsToJSON(rs);
-//                    Gson gson = new Gson();
-//                    Scooter vh = gson.fromJson(json, Scooter.class);
-//                    motor_vehicles.add(vh);
-//                }
+                motor_vehicles.add(vh);
             }
 
             return motor_vehicles;
@@ -265,15 +270,6 @@ public class EditVehiclesTable {
             Connection con = DB_connection.getConnection();
             Statement stmt = con.createStatement();
 
-//            String insertQuery = "INSERT INTO `bikes`(`bike_id`, `color`, `model`, `rentingCost`, `type`, `brand`, `isRented`, `under_service`) VALUES("
-//                    + "'" + user.getLicenceNumber() + "',"
-//                    + "'" + user.getColor() + "',"
-//                    + "'" + user.getModel() + "',"
-//                    + "'" + user.getRentingCost() + "',"
-//                    + "'" + user.getType() + "',"
-//                    + "'" + user.getBrand() + "',"
-//                    + "'" + user.getIsRented() + "',"
-//                    + "'" + user.getUnder_service() + "')";
             String insertQuery = "INSERT INTO `bikes`(`bike_id`) VALUES (" + "'" + user.getLicenceNumber() + "')";
 
 
@@ -286,7 +282,7 @@ public class EditVehiclesTable {
             System.out.println("Exception occurred:");
             ex.printStackTrace();
         }
-        return "Your unique bike key is " + getLastId("bikes", "bike_id");
+        return "bike was added successfully with licence the number: " + user.getLicenceNumber();
     }
 
 
@@ -296,15 +292,6 @@ public class EditVehiclesTable {
             Connection con = DB_connection.getConnection();
             Statement stmt = con.createStatement();
 
-//            String insertQuery = "INSERT INTO `scooters`(`scooter_id`, `color`, `model`, `rentingCost`, `type`, `brand`, `isRented`, `under_service`) VALUES("
-//                    + "'" + user.getLicenceNumber() + "',"
-//                    + "'" + user.getColor() + "',"
-//                    + "'" + user.getModel() + "',"
-//                    + "'" + user.getRentingCost() + "',"
-//                    + "'" + user.getType() + "',"
-//                    + "'" + user.getBrand() + "',"
-//                    + "'" + user.getIsRented() + "',"
-//                    + "'" + user.getUnder_service() + "')";
             String insertQuery = "INSERT INTO `scooters`(`scooter_id`) VALUES (" + "'" + user.getLicenceNumber() + "')";
 
             stmt.executeUpdate(insertQuery);
@@ -317,7 +304,7 @@ public class EditVehiclesTable {
             ex.printStackTrace();
         }
 
-        return "Your unique scooter id key is " + getLastId("scooters", "scooter_id");
+        return "scooter was added successfully with licence the number: " + user.getLicenceNumber();
     }
 
     public void createMotorVehiclesTable() throws SQLException, ClassNotFoundException {

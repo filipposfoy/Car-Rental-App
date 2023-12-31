@@ -17,6 +17,7 @@ import database.tables.EditVehiclesTable;
 import java.util.ArrayList;
 import mainClasses.Vehicle;
 import subClasses.Bike;
+import subClasses.MotorVehicle;
 import subClasses.Scooter;
 
 /**
@@ -52,8 +53,14 @@ public class searchVehicle extends HttpServlet {
             System.out.println("(" + v.getType() + ")");
 
             if ("Car".equals(v.getType())) {
-//                MotorVehicle vs = new MotorVehicle(v.getLicenceNumber(), v.getColor(), v.getModel(), v.getRentingCost(), v.getType(), v.getBrand(), v.getIsRented(), v.getUnder_service(), (int) v.getLicenceNumber(), v.getLicenceNumber());
-                jo.addProperty("" + i, v.printString(i + 1));
+                try {
+                    String[] fields = table.getMotorVehicle(v.getLicenceNumber());
+                    MotorVehicle vs = new MotorVehicle((int) v.getLicenceNumber(), v.getColor(), v.getModel(), v.getRentingCost(), v.getType(), v.getBrand(), v.getIsRented(), v.getUnder_service(), fields[3], v.getLicenceNumber(), Long.parseLong(fields[1]), fields[2]);
+                    jo.addProperty("" + i, vs.printString(i + 1));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
             } else if ("Bike".equals(v.getType())) {
                 Bike vs = new Bike(v.getVehicle_id(), v.getColor(), v.getModel(), v.getRentingCost(), v.getType(), v.getBrand(), v.getIsRented(), v.getUnder_service(), (int) v.getLicenceNumber(), v.getLicenceNumber());
                 jo.addProperty("" + i, vs.printString(i + 1));
