@@ -19,7 +19,6 @@ import mainClasses.Vehicle;
 import subClasses.Bike;
 import subClasses.Scooter;
 
-
 /**
  *
  * @author user
@@ -53,7 +52,7 @@ public class searchVehicle extends HttpServlet {
             System.out.println("(" + v.getType() + ")");
 
             if ("Car".equals(v.getType())) {
-//                MotorVehicle vs = new MotorVehicle(v.getVehicle_id(), v.getColor(), v.getModel(), v.getRentingCost(), v.getType(), v.getBrand(), v.getIsRented(), v.getUnder_service(), (int) v.getLicenceNumber(), v.getLicenceNumber());
+//                MotorVehicle vs = new MotorVehicle(v.getLicenceNumber(), v.getColor(), v.getModel(), v.getRentingCost(), v.getType(), v.getBrand(), v.getIsRented(), v.getUnder_service(), (int) v.getLicenceNumber(), v.getLicenceNumber());
                 jo.addProperty("" + i, v.printString(i + 1));
             } else if ("Bike".equals(v.getType())) {
                 Bike vs = new Bike(v.getVehicle_id(), v.getColor(), v.getModel(), v.getRentingCost(), v.getType(), v.getBrand(), v.getIsRented(), v.getUnder_service(), (int) v.getLicenceNumber(), v.getLicenceNumber());

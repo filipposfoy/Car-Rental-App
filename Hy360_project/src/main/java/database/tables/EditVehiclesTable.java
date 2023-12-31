@@ -148,19 +148,25 @@ public class EditVehiclesTable {
             Connection con = DB_connection.getConnection();
             Statement stmt = con.createStatement();
 
-            String insertQuery = "INSERT INTO `motor_vehicles`(`color`, `model`, `rentingCost`, `type`, `brand`, `isRented`, `mileage`, `licenceNumber`, `passengerCapacity`, `carType`, `under_service`) VALUES("
-                    //                    + "'" + user.getVehicle_id() + "',"
-                    + "'" + user.getColor() + "',"
-                    + "'" + user.getModel() + "',"
-                    + "'" + user.getRentingCost() + "',"
-                    + "'" + user.getType() + "',"
-                    + "'" + user.getBrand() + "',"
-                    + "'" + user.getIsRented() + "',"
-                    + "'" + user.getMileage() + "',"
+            String insertQuery = "INSERT INTO `motor_vehicles`(`licenceNumber`, `mileage`, `passengerCapacity`, `carType`) VALUES ("
                     + "'" + user.getLicenceNumber() + "',"
+                    + "'" + user.getMileage() + "',"
                     + "'" + user.getPassengerCapacity() + "',"
-                    + "'" + user.getCarType() + "',"
-                    + "'" + user.getUnder_service() + "')";
+                    + "'" + user.getCarType() + "')";
+
+//            String insertQuery = "INSERT INTO `motor_vehicles`(`color`, `model`, `rentingCost`, `type`, `brand`, `isRented`, `mileage`, `licenceNumber`, `passengerCapacity`, `carType`, `under_service`) VALUES("
+//                    //                    + "'" + user.getVehicle_id() + "',"
+//                    + "'" + user.getColor() + "',"
+//                    + "'" + user.getModel() + "',"
+//                    + "'" + user.getRentingCost() + "',"
+//                    + "'" + user.getType() + "',"
+//                    + "'" + user.getBrand() + "',"
+//                    + "'" + user.getIsRented() + "',"
+//                    + "'" + user.getMileage() + "',"
+//                    + "'" + user.getLicenceNumber() + "',"
+//                    + "'" + user.getPassengerCapacity() + "',"
+//                    + "'" + user.getCarType() + "',"
+//                    + "'" + user.getUnder_service() + "')";
 
             stmt.executeUpdate(insertQuery);
             System.out.println("# The vehicle was successfully added in the database.");
