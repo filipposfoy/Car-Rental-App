@@ -15,8 +15,8 @@ public class Scooter extends Vehicle {
     int scooter_id;
 
 
-    public Scooter(int vehicle_id, String color, String model, long rentingCost, String type, String brand, int isRented, int under_service, int scooter_id) {
-        super(vehicle_id, color, model, rentingCost, type, brand, isRented, under_service);
+    public Scooter(int vehicle_id, String color, String model, long rentingCost, String type, String brand, int isRented, int under_service, int scooter_id, long licenseNumber) {
+        super(vehicle_id, color, model, rentingCost, type, brand, isRented, under_service, licenseNumber);
         this.scooter_id = scooter_id;
     }
 

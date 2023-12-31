@@ -29,6 +29,7 @@ public class addRentalVehicle extends HttpServlet {
 
         String res = "";
         String type = "";
+        int ln;
 
         String user = request.getParameter("user");
         JsonObject jo = new JsonObject();
@@ -36,11 +37,27 @@ public class addRentalVehicle extends HttpServlet {
         JsonNode jsonNode = objectMapper.readTree(user);
 
         type = jsonNode.get("type").asText();
-        System.out.println(type);
+        ln = jsonNode.get("licenceNumber").asInt();
+
+        EditVehiclesTable table = new EditVehiclesTable();
+
+        try {
+            if (table.isLicenceNumberUnique(ln) == false) {
+                jo.addProperty("str", "licence number is not unique");
+                jo.addProperty("color", "red");
+
+                response.setContentType("application/json");
+                response.getWriter().write(jo.toString());
+                return;
+            }
+            table.addRentalVehicle(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         switch (type) {
             case "Car":
             try {
-                EditVehiclesTable table = new EditVehiclesTable();
                 res = table.addRentalMotorVehicle(user);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -49,7 +66,6 @@ public class addRentalVehicle extends HttpServlet {
 
             case "Bike":
             try {
-                EditVehiclesTable table = new EditVehiclesTable();
                 res = table.addRentalBike(user);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -58,7 +74,6 @@ public class addRentalVehicle extends HttpServlet {
 
             case "Scooter":
             try {
-                EditVehiclesTable table = new EditVehiclesTable();
                 res = table.addRentalScooter(user);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -66,7 +81,8 @@ public class addRentalVehicle extends HttpServlet {
             break;
         }
 
-        jo.addProperty("str", res);
+//        jo.addProperty("str", user);
+        jo.addProperty("str", ln);
         jo.addProperty("color", "green");
 
         response.setContentType("application/json");

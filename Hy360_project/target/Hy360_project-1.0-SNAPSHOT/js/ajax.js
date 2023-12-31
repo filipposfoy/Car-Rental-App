@@ -146,7 +146,18 @@ const toggleFields = () => {
     const type = document.querySelector('input[name="type"]:checked').value;
     document.getElementById('rvar1').style.display = (type === "Car") ? "table-row" : "none";
     document.getElementById('rvar2').style.display = (type === "Car") ? "table-row" : "none";
-    document.getElementById('rvar3').style.display = (type === "Car") ? "table-row" : "none";
+//    document.getElementById('rvar3').style.display = (type === "Car") ? "table-row" : "none";
+    if (type === "Car") {
+        document.getElementById('rvar3').innerText = "Licence number";
+        document.getElementById('rvar3').placeholder = "licence plate number";
+    } else if (type === "Bike") {
+        document.getElementById('rvar3').innerText = "Bike id";
+        document.getElementById('rvar3').placeholder = "bike id number";
+    } else {
+        document.getElementById('rvar3').innerText = "Scooter id";
+        document.getElementById('rvar3').placeholder = "scooter id number";
+    }
+    
     document.getElementById('rvar4').style.display = (type === "Car") ? "table-row" : "none";
 }
 
@@ -160,6 +171,7 @@ const getSupply = () => {
         rentingCost: cost.value,
         isRented: 0,
         under_service: 0,
+        licenceNumber: document.getElementById("licensePlateNumber").value
     };
     
     if (type === "Car") {
@@ -167,7 +179,7 @@ const getSupply = () => {
         JSON.mileage = document.getElementById("supplyMileage").value;
         JSON.carType = document.getElementById("supplyType").value;
         JSON.passengerCapacity = document.getElementById("supplyCapacity").value;
-        JSON.licenseNumber = document.getElementById("licensePlateNumber").value;
+
     }
     
     return JSON;
@@ -188,6 +200,8 @@ const sendSupplyRequst = () => {
     const user = getSupply();
     var xhr = new XMLHttpRequest();
     var queryParams;
+
+    console.log(user);
 
     xhr.onload = function () {
       if (xhr.readyState === 4) {

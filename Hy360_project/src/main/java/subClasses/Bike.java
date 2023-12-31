@@ -14,8 +14,8 @@ public class Bike extends Vehicle {
 
     int bike_id;
 
-    public Bike(int vehicle_id, String color, String model, long rentingCost, String type, String brand, int isRented, int under_service, int bike_id) {
-        super(vehicle_id, color, model, rentingCost, type, brand, isRented, under_service);
+    public Bike(int vehicle_id, String color, String model, long rentingCost, String type, String brand, int isRented, int under_service, int bike_id, long licenseNumber) {
+        super(vehicle_id, color, model, rentingCost, type, brand, isRented, under_service, licenseNumber);
         this.bike_id = bike_id;
     }
 

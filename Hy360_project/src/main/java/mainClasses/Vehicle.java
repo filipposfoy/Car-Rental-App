@@ -12,10 +12,10 @@ public class Vehicle {
 
     int vehicle_id;
     String color, model, type, brand;
-    long rentingCost;
+    long rentingCost, licenceNumber;
     int isRented, under_service;
 
-    public Vehicle(int vehicle_id, String color, String model, long rentingCost, String type, String brand, int IsRented, int under_service) {
+    public Vehicle(int vehicle_id, String color, String model, long rentingCost, String type, String brand, int IsRented, int under_service, long licenceNumber) {
         this.color = color;
         this.model = model;
         this.rentingCost = rentingCost;
@@ -23,6 +23,15 @@ public class Vehicle {
         this.type = type;
         this.isRented = isRented;
         this.under_service = under_service;
+        this.licenceNumber = licenceNumber;
+    }
+
+    public long getLicenceNumber() {
+        return licenceNumber;
+    }
+
+    public void setLicenceNumber(long licenceNumber) {
+        this.licenceNumber = licenceNumber;
     }
 
     public int getVehicle_id() {

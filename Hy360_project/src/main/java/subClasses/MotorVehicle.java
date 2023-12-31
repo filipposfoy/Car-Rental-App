@@ -12,20 +12,14 @@ import mainClasses.Vehicle;
  */
 public class MotorVehicle extends Vehicle {
 
-    long licenseNumber, passengerCapacity;
+    long passengerCapacity;
     String mileage, carType;
 
-    public MotorVehicle(int vehicle_id, String color, String model, long rentingCost, String type, String brand, int isRented, int under_service, String mileage, long licenseNumber, long passengerCapacity, String carType) {
-        super(vehicle_id, color, model, rentingCost, type, brand, isRented, under_service);
+    public MotorVehicle(int vehicle_id, String color, String model, long rentingCost, String type, String brand, int isRented, int under_service, String mileage, long licenceNumber, long passengerCapacity, String carType) {
+        super(vehicle_id, color, model, rentingCost, type, brand, isRented, under_service, licenceNumber);
         this.mileage = mileage;
         this.passengerCapacity = passengerCapacity;
         this.carType = carType;
-        this.licenseNumber = licenseNumber;
-    }
-
-
-    public void setLicenseNumber(long licenseNumber) {
-        this.licenseNumber = licenseNumber;
     }
 
     public void setPassengerCapacity(long passengerCapacity) {
@@ -42,10 +36,6 @@ public class MotorVehicle extends Vehicle {
 
     public String getCarType() {
         return carType;
-    }
-
-    public long getLlcenseNumber() {
-        return licenseNumber;
     }
 
     public void setMileage(String mileage) {
@@ -65,10 +55,9 @@ public class MotorVehicle extends Vehicle {
                 + "rentingCost       = " + getRentingCost() + "<br>"
                 + "type              = " + getType() + "<br>"
                 + "mileage           = " + mileage + "<br>"
-                + "licenseNumber     = " + licenseNumber + "<br>"
+                + "licenseNumber     = " + getLicenceNumber() + "<br>"
                 + "passengerCapacity = " + passengerCapacity + "<br>"
-                + "carType           = " + carType + "<br>"
-                + "vehicle id        = " + getVehicle_id() + "<br>";
+                + "carType           = " + carType + "<br>";
     }
 
 }

@@ -15,9 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import database.tables.EditVehiclesTable;
 import java.util.ArrayList;
+import mainClasses.Vehicle;
 import subClasses.Bike;
 import subClasses.Scooter;
-import subClasses.MotorVehicle;
+
 
 /**
  *
@@ -38,27 +39,50 @@ public class searchVehicle extends HttpServlet {
         JsonNode jsonNode = objectMapper.readTree(user);
         String str = jsonNode.get("type").asText();
         EditVehiclesTable table = new EditVehiclesTable();
-        ArrayList<?> arr = new ArrayList();
+        ArrayList<Vehicle> arr = new ArrayList();
 
         try {
-            arr = table.getAvailableMotorVehicles(str);
+            arr = table.getAvailableMotorVehicles2(str);
         } catch (Exception e) {
 
         }
         String output = "";
 
         for (int i = 0; i < arr.size(); i++) {
-            if (arr.get(i) instanceof MotorVehicle) {
-                MotorVehicle v = (MotorVehicle) arr.get(i);
+            Vehicle v = (Vehicle) arr.get(i);
+            System.out.println("(" + v.getType() + ")");
+
+            if ("Car".equals(v.getType())) {
+//                MotorVehicle vs = new MotorVehicle(v.getVehicle_id(), v.getColor(), v.getModel(), v.getRentingCost(), v.getType(), v.getBrand(), v.getIsRented(), v.getUnder_service(), (int) v.getLicenceNumber(), v.getLicenceNumber());
                 jo.addProperty("" + i, v.printString(i + 1));
-            } else if (arr.get(i) instanceof Bike) {
-                Bike v = (Bike) arr.get(i);
-                jo.addProperty("" + i, v.printString(i + 1));
-            } else if (arr.get(i) instanceof Scooter) {
-                Scooter v = (Scooter) arr.get(i);
-                jo.addProperty("" + i, v.printString(i + 1));
+            } else if ("Bike".equals(v.getType())) {
+                Bike vs = new Bike(v.getVehicle_id(), v.getColor(), v.getModel(), v.getRentingCost(), v.getType(), v.getBrand(), v.getIsRented(), v.getUnder_service(), (int) v.getLicenceNumber(), v.getLicenceNumber());
+                jo.addProperty("" + i, vs.printString(i + 1));
+            } else if ("Scooter".equals(v.getType())) {
+                Scooter vs = new Scooter(v.getVehicle_id(), v.getColor(), v.getModel(), v.getRentingCost(), v.getType(), v.getBrand(), v.getIsRented(), v.getUnder_service(), (int) v.getLicenceNumber(), v.getLicenceNumber());
+                jo.addProperty("" + i, vs.printString(i + 1));
             }
         }
+
+//            if (arr.get(i) instanceof MotorVehicle) {
+//                MotorVehicle v = (MotorVehicle) arr.get(i);
+//                if (v.getType() == "Car") {
+//                    jo.addProperty("" + i, v.printString(i + 1));
+//                    ;
+//                }
+//            }
+//            if (arr.get(i) instanceof Bike) {
+//                Bike v = (Bike) arr.get(i);
+//                if (v.getType() == "Bike") {
+//                    jo.addProperty("" + i, v.printString(i + 1));
+//                }
+//            }
+//            if (arr.get(i) instanceof Scooter) {
+//                Scooter v = (Scooter) arr.get(i);
+//                if (v.getType() == "Scooter") {
+//                    jo.addProperty("" + i, v.printString(i + 1));
+//                }
+//            }
         jo.addProperty("str", arr.size());
 
         response.setContentType("application/json");
