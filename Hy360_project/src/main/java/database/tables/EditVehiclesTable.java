@@ -195,13 +195,32 @@ public class EditVehiclesTable {
         return "motor vehicle was added successfully with licence the number: " + user.getLicenceNumber();
     }
 
+    public void setUnderService(int id, int flag) throws Exception {
+        int str = 0;
+        ResultSet rs = null;
+        try {
+            Connection con = DB_connection.getConnection();
+            Statement stmt = con.createStatement();
+
+            String insertQuery = "UPDATE vehicles SET under_service = " + flag + " WHERE licenceNumber = " + id + ";";
+            System.out.println(insertQuery);
+            stmt.executeUpdate(insertQuery);
+
+            stmt.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Exception occurred:");
+            ex.printStackTrace();
+        }
+    }
+
     public ArrayList<Vehicle> getAvailableMotorVehicles(String type) throws SQLException, ClassNotFoundException {
         Connection con = DB_connection.getConnection();
         Statement stmt = con.createStatement();
 
         ArrayList<Vehicle> motor_vehicles = new ArrayList<>();
         ResultSet rs = null;
-        String query = "SELECT * FROM vehicles WHERE isRented = 0 AND type = '" + type + "';";
+        String query = "SELECT * FROM vehicles WHERE under_service = 0 AND isRented = 0 AND type = '" + type + "';";
         try {
             rs = stmt.executeQuery(query);
             System.out.println(query);

@@ -1,3 +1,4 @@
+servlets/repairVehicle$1.class
 database/init/InitDatabase.class
 database/tables/EditVehiclesTable.class
 mainClasses/Vehicle.class

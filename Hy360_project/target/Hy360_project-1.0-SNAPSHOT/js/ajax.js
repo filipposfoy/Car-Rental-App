@@ -62,21 +62,15 @@ const repairVehicle = (typeOfRepair) => {
         onError(document.getElementById('getRepairId'), "Enter a vehicle id");
         $("#"+typeOfRepair).prop("checked", false);
         return;
-    } else {
-        
+    } else {  
         onSuccess(document.getElementById('getRepairId'));
     }
-    if (document.querySelector('input[name="petGender"]:checked') === null) {
-        return;
-    } 
 
     const req = {
         vehicle_id: document.getElementById('getRepairId').value,
         type: typeOfRepair,
-        vehicle_type: document.querySelector('input[name="typet"]:checked').value,
     };
-
-//    console.      
+    console.log(req);
 
     var xhr = new XMLHttpRequest();
     var queryParams;
@@ -95,6 +89,8 @@ const repairVehicle = (typeOfRepair) => {
             reject("Error occurred during the request.");
         }
     };
+    
+    console.log(req);
 
     const url = "repairVehicle";
     xhr.open("POST", url);
