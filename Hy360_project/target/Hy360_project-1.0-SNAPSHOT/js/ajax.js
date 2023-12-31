@@ -79,7 +79,9 @@ const repairVehicle = (typeOfRepair) => {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 const responseData = JSON.parse(xhr.responseText);
-                console.log(responseData.str);
+                document.getElementById('smallRep').innerText = responseData.str;
+                document.getElementById('smallRep').style.color = responseData.color;
+                document.getElementById('getRepairId').style.borderColor = responseData.color;                
             } else {
                 console.log("not good.");
                 reject("Error occurred during the request.");

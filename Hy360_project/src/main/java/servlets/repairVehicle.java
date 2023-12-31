@@ -45,7 +45,7 @@ public class repairVehicle extends HttpServlet {
         try {
             if (table.isLicenceNumberUnique(Integer.parseInt(id)) == true) {
                 jo.addProperty("str", "vehicle doens't exist");
-
+                jo.addProperty("color", "red");
                 response.setContentType("application/json");
                 response.getWriter().write(jo.toString());
                 return;
@@ -83,7 +83,8 @@ public class repairVehicle extends HttpServlet {
             }
         }).start();
 
-        jo.addProperty("str", user);
+        jo.addProperty("str", "vehicle will be under " + type);
+        jo.addProperty("color", "green");
 
         response.setContentType("application/json");
         response.getWriter().write(jo.toString());
