@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang = "en">
+  <head>
+    <title>Register Form HTML5/CSS, JS</title>
+    <meta charset= "UTF-8">
+    <meta name = "viewport" content="width=device-width, initial-scale=1">
+    <link href= "css/cssExamples.css" rel=" stylesheet">
+    <script defer src = "js/ajax.js"></script> 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  </head>
+  <body>
+    <div>
+        <button onclick="switchForm('Add')">Add Customer</button>
+        <button onclick="switchForm('Supply')">Supply Vehicles</button>
+        <button onclick="switchForm('Search')">Search for a vehicle</button>
+        <button onclick="switchForm('Renting')">Renting</button>
+        <button onclick="switchForm('Returns')">Returns</button>
+        <button onclick="switchForm('Repairs')">Repairs</button>
+        <button onclick="switchForm('malfunction')">Mention a malfunction</button>
+        <button onclick="switchForm('accident')">Mention an accident</button>
+        <button onclick="switchForm('Questions')">Questions</button>
+    </div>
+      <div id="formsContainer">
+        <form id="addCustomerForm">
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td>
+                      <input type="text" id="customerName" name="customerName" placeholder = "name" value = "">
+                      <small></small>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Surname:</td>
+                    <td>
+                      <input type="text" id="customerSurname" name="customerSurname" placeholder = "surname" value = "">
+                      <small></small>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td>
+                      <input type="text" id="customerAddress" name="customerAddress" placeholder = "address" value = "">
+                      <small></small>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Date of Birth:</td>
+                    <td>
+                      <input type="date" id="customerDOB" name="customerDOB" required value = "">
+                      <small></small></td>
+                </tr>
+                <tr>
+                    <td>License Number:</td>
+                    <td>
+                      <input type="text" id="licenseNumber" name="licenseNumber" placeholder = "license number" value = "">
+                      <small></small>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Credit Card:</td>
+                    <td>
+                      <input type="text" id="creditCard" name="creditCard" placeholder = "xxxx xxxx xxxx xxxx" value = "">
+                      <small></small>
+                    </td>
+                </tr>
+            </table>
+
+           <button id = "addButton" type="button" onclick="addCustomerOnSubmit();return false;">Submit</button>
+           <small id = "msg"></small>
+        </form>
+
+        <form id="supplyVehiclesForm" style="display: none;">
+            <table>
+                <tr>
+                    <td>Brand:</td>
+                    <td><input type="text" id="supplyBrand" name="supplyBrand" placeholder = "brand"></td>
+                </tr>
+                <tr>
+                    <td>Model:</td>
+                    <td><input type="text" id="supplyModel" name="supplyModel" placeholder = "model"></td>
+                </tr>
+                <tr>
+                    <td>Color:</td>
+                    <td><input type="text" id="supplyColor" name="supplyColor" placeholder = "color"></td>
+                </tr>
+                <tr>
+                    <td>Renting Cost:</td>
+                    <td><input type="text" id="supplyCost" name="supplyCost" placeholder = cost></td>
+                </tr>
+                <tr>
+                    <td>
+                      Type:
+                    </td>
+                    <td>
+                        <input type="radio" name="type" class="" value="Car" checked onchange="toggleFields()">Car
+                        <input type="radio" name="type" class="" value="Bike" onchange="toggleFields()">Bike
+                        <input type="radio" name="type" class="" value="Scooter" onchange="toggleFields()">Scooter
+                    </td>
+                 </tr>
+                 <tr id = "rvar4">
+                    <td>Mileage:</td>
+                    <td><input type="text" id="supplyMileage" name="supplyMileage" placeholder = "mileage"></td>
+                </tr>
+                 <tr id = "rvar1">
+                     <td>Car type:</td>
+                     <td>
+                         <input id ="supplyType" name ="supplyType" type ="text" placeholder="car type">
+                     </td>
+                 </tr>
+                 <tr id = "rvar2">
+                     <td>Passenger Capacity:</td>
+                     <td>
+                         <input id ="supplyCapacity" name ="supplyCapacity" type ="text" placeholder="capacity">
+                     </td>
+                 </tr>
+                 <tr>
+                     <td id = "rvar3">License number:</td>
+                     <td>
+                         <input id ="licensePlateNumber" name ="licensePlateNumber" type ="text" placeholder="license plate number">
+                     </td>
+                 </tr>
+            </table>
+            <button id = "RentalButton" type="button" onclick="sendSupplyRequst();return false;">Submit</button>
+           <small id = "msgR"></small>
+        </form>
+          
+        <form id="searchVehicleForm" style="display: none;">
+            <table>
+                <tr>
+                    <td>
+                      Type:
+                    </td>
+                    <td>
+                        <input type="radio" name="typeR" class="" value="Car" onchange="showVehicles('Car');return false;">Car
+                        <input type="radio" name="typeR" class="" value="Bike" onchange="showVehicles('Bike');return false;">Bike
+                        <input type="radio" name="typeR" class="" value="Scooter" onchange="showVehicles('Scooter');return false;">Scooter
+                    </td>
+                 </tr>
+            </table>
+            <table id ="vehicleTable"></table>
+        </form>
+
+      <form id="rentVehicleForm" style="display: none;">
+           <table id ="toRent"></table>
+            <table>
+                <tr>
+                    <td>Customer ID:</td>
+                    <td>
+                        <input type="text" id="Booking_CustomerID" name="Booking_CustomerID" placeholder = "xxxxx">
+                        <small id = "Booking_CustomerID_small"></small>
+                        <small id = "cardMsg"></small>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Licence Plates number:</td>
+                    <td>
+                        <input type="text" id="arithmospinakidwn" name="arithmospinakidwn" placeholder = "xxxxx">
+                        <small id = "vehicleMsgId" ></small>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Driver ID : (if needed) </td>
+                    <td>
+                        <input type="text" id="Booking_DriverID" name="Booking_DriverID" placeholder = "xxxxx" value = "">
+                        <small id = "licenceIdMsg"></small>
+                    </td>
+                </tr>
+                <tr>
+                    <td>From:</td>
+                    <td><input type="date" id="startingDate" name="startingDate" required></td>
+                </tr>
+                <tr>
+                    <td>To:</td>
+                    <td><input type="date" id="endingDate" name="endingDate" required></td>
+                </tr>
+                
+                <tr>
+                <td>
+                    <button id = "bookButton" type="button" onclick="addBooking();return false;">Submit</button>
+                    <small id = "bookMsg"></small>
+                </td>
+                </tr>
+            </table>
+        </form>
+          
+        <form id="returnVehicleForm" style="display: none;">
+            <table>
+                <tr>
+                    <td>rent Id:</td>
+                    <td>
+                        <input type="text" id="getVehicleIdreturn" name="getVehicleIdreturn" placeholder = "add your car id">
+                        <small></small>
+                    </td>
+                </tr>
+                 <tr>
+                    <td>Return date</td>
+                    <td><input type="date" id="returnDate" name="returnDate" required></td>
+                </tr>
+                <tr>
+                    <td>
+                    <button id = "submitReturnButton" type="button" onclick="addReturn();return false;">Submit</button>
+                    <small id = "returnMsg"></small>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        <form id="repairVehicleForm" style="display: none;">
+            <table>
+                <tr>
+                    <td>Vehicle Id:</td>
+                    <td>
+                        <input type="text" id="getRepairId" name="getRepairId" placeholder = "add your vehicle id">
+                        <small></small>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Maintenance type:
+                    </td>
+                    <td>
+                        <input id = "maintenance" type="radio" name="typeM" class="" value="maintenance" onchange="repairVehicle('maintenance')">Maintenance
+                        <input id = "repair" type="radio" name="typeM" class="" value="repair" onchange="repairVehicle('repair')">Repair
+                    </td>    
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><small id = "smallRep"></small></td>
+                </tr>
+            </table>
+        </form>
+          
+        <form id="malfunctionForm" style="display: none;">
+            <table>
+                <tr>
+                    <td>Licence number:</td>
+                    <td><input type="text" id="getCarIdmal" name="getCarIdmal" placeholder = "add your car id"></td>
+                </tr>
+                <tr>
+                    <td>Submit a malfunction:</td>
+                    <td><input type="text" id="malfunctionSubmission" name="malfunctionSubmission" placeholder = "add details"></td>
+                </tr>
+            </table>
+            
+            <button id = "malfButton" type="button" onclick="sendIssueRequest('malfunction');return false;">Submit</button>
+           <small id = "malfMsg"></small>
+        </form>
+
+        <form id="accidentForm" style="display: none;">
+            <table>
+                <tr>
+                    <td>Licence number:</td>
+                    <td><input type="text" id="getCarIdacc" name="getCarIdacc" placeholder = "add your car id"></td>
+                </tr>
+                <tr>
+                    <td>Submit accident:</td>
+                    <td><input type="text" id="accidentSubmission" name="accidentSubmission" placeholder = "add details"></td>
+                </tr>
+            </table>
+            
+             <button id = "accidentButton" type="button" onclick="sendIssueRequest('accident');return false;">Submit</button>
+           <small id = "accidentMsg"></small>
+        </form>
+          
+        <form id="questionsForm" style="display: none;">
+            <table>
+                <tr>
+                    <td><button id = "abstractQueries" type="button" onclick = "fixedQuery(0);return false;">State of rented vehicles</button></td>
+                    <td><button id = "abstractQueries" type="button" onclick = "fixedQuery(1);return false;">All rented vehicles</button></td>
+                    <td><button id = "abstractQueries" type="button" onclick = "fixedQuery(2);return false;">Average booking duration</button></td>
+                    <td><button id = "abstractQueries" type="button" onclick = "fixedQuery(3);return false;">Most popular vehicle</button></td>
+                    <td><button id = "abstractQueries" type="button" onclick = "fixedQuery(4);return false;">Revenue from each vehicle</button></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td>Queries:</td>
+                    <td>
+                        <textarea id = "getQuery" name = "Text" cols="40" rows="5" placeholder = "add a query" ></textarea>
+                    </td>
+                </tr>
+            </table>
+            <button id = "queryButton" type="button" onclick="submitQuery();return false;">Submit</button>
+            <p id = "queryMsg"></p>
+            <div id ="d"></div>
+        </form>
+    </div>
+  </body>
+</html> 
+
+    
